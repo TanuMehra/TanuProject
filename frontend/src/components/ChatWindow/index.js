@@ -74,7 +74,7 @@ export default function ChatWindow({ sessionId, history }) {
     autoGrow();
     setTyping(true);
 
-    fetch(`http://localhost:5000/api/chat/${sessionId}`, {
+    fetch(`https://tanuproject.onrender.com/api/chat/${sessionId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question: userText }),
@@ -102,7 +102,7 @@ export default function ChatWindow({ sessionId, history }) {
 
     setRegenLoading(true);
 
-    fetch(`http://localhost:5000/api/chat/${sessionId}`, {
+    fetch(`https://tanuproject.onrender.com/api/chat/${sessionId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question: lastUserMessage }),
