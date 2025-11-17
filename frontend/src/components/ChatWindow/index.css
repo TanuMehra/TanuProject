@@ -1,0 +1,252 @@
+/* ===========================
+      MAIN CHAT WINDOW
+=========================== */
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===========================
+        MESSAGES AREA
+=========================== */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 40px;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbars */
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+.messages::-webkit-scrollbar-thumb {
+  background: #8883;
+  border-radius: 4px;
+}
+
+/* ===========================
+      CHAT BUBBLES
+=========================== */
+.bubble {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+  max-width: 85%;
+}
+
+.bubble.user {
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+
+.bubble.bot {
+  margin-right: auto;
+}
+
+/* Avatar */
+.avatar {
+  font-size: 30px;
+  padding: 10px;
+  background: #e6e6e6;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bubble Content */
+.bubble-content {
+  background: var(--bubble-bot);
+  padding: 14px 18px;
+  border-radius: 14px;
+  line-height: 1.5;
+  font-size: 15px;
+  white-space: pre-wrap;
+  box-shadow: 0 2px 6px #0002;
+}
+
+.bubble.user .bubble-content {
+  background: var(--bubble-user);
+}
+
+/* Markdown text */
+.bubble-text h3 {
+  margin: 0;
+}
+.bubble-text strong {
+  font-weight: bold;
+}
+
+/* ===========================
+       FEEDBACK BUTTONS
+=========================== */
+.feedback-buttons {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+}
+
+.feedback-buttons button {
+  border: none;
+  background: #dddddd;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.feedback-buttons button.active {
+  background: #007bff;
+  color: white;
+}
+
+/* ===========================
+       TYPING LOADING
+=========================== */
+.typing-bubble .typing-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.typing-dots span {
+  width: 8px;
+  height: 8px;
+  background: #777;
+  border-radius: 50%;
+  animation: blink 1.3s infinite;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+  0% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-4px); }
+  100% { opacity: 0.3; transform: translateY(0); }
+}
+
+/* ===========================
+       REGENERATE BUTTON
+=========================== */
+.regen-btn {
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 15px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.regen-btn:hover {
+  background: #dddddd;
+}
+
+/* ===========================
+         INPUT BAR FIXED
+=========================== */
+.input-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--sidebar-bg);
+  border-top: 1px solid #ccc;
+  position: sticky;
+  bottom: 0;
+}
+
+/* Big ChatGPT-style Textarea */
+.big-input {
+  flex: 1;
+  min-height: 48px;
+  max-height: 130px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid #bbb;
+  resize: none;
+  overflow-y: auto;
+  background: var(--input-bg);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* ===========================
+      ACTION ICON BUTTONS
+=========================== */
+.action-btn,
+.send-btn {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f1f1f1;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+
+  transition: 0.22s ease-in-out;
+}
+
+/* Hover effect for icons */
+.action-btn:hover {
+  background: #e6e6e6;
+  transform: scale(1.16);
+}
+
+/* Mic animation */
+.mic-btn:hover {
+  background: rgba(255, 60, 60, 0.2);
+  box-shadow: 0 0 10px rgba(255, 60, 60, 0.4);
+}
+
+/* ===========================
+        SEND BUTTON STYLE
+=========================== */
+.send-btn {
+  background: #007bff;
+  color: white;
+}
+
+.send-btn:hover {
+  transform: scale(1.20) translateY(-2px);
+  background: #0065d8;
+  box-shadow: 0 6px 14px rgba(0, 123, 255, 0.35);
+}
+
+.send-btn:active {
+  transform: scale(0.92);
+}
+
+/* ===========================
+        RESPONSIVE FIXES
+=========================== */
+@media (max-width: 768px) {
+  .messages {
+    padding: 15px;
+  }
+  .bubble {
+    max-width: 95%;
+  }
+  .action-btn,
+  .send-btn {
+    width: 44px;
+    height: 44px;
+  }
+}

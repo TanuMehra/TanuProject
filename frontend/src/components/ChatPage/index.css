@@ -1,0 +1,13 @@
+.page-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .page-layout {
+    flex-direction: column;
+  }
+}

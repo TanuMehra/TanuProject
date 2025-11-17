@@ -1,0 +1,13 @@
+GET http://localhost:5000/api/sessions
+
+###
+GET http://localhost:5000/api/new-chat
+###
+GET http://localhost:5000/api/session/1
+###
+POST http://localhost:5000/api/chat/1
+Content-Type: application/json
+
+{
+  "question": "Hello"
+}

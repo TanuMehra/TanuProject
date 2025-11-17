@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body.light {
+  background: #f7f7f8;
+  color: #111;
+}
+
+body.dark {
+  background: #1e1e1e;
+  color: #f1f1f1;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 3000;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #10a37f;
+  color: white;
+  font-weight: bold;
+}
