@@ -8,12 +8,14 @@ export default function ChatPage() {
   const { sessionId } = useParams();
   const navigate = useNavigate();
 
+  const API = "https://tanuproject.onrender.com";
+
   const [sessions, setSessions] = useState([]);
   const [history, setHistory] = useState([]);
 
   // GET ALL SESSIONS
   const fetchSessions = () => {
-    fetch("http://localhost:5000/api/sessions")
+    fetch(`${API}/api/sessions`)
       .then((res) => res.json())
       .then((data) => setSessions(data.sessions || []));
   };
@@ -21,21 +23,21 @@ export default function ChatPage() {
   // GET CHAT HISTORY
   const fetchHistory = () => {
     if (!sessionId) return;
-    fetch(`http://localhost:5000/api/session/${sessionId}`)
+    fetch(`${API}/api/session/${sessionId}`)
       .then((res) => res.json())
       .then((data) => setHistory(data.history || []));
   };
 
   // CREATE NEW CHAT
   const loadNewChat = () => {
-    fetch("http://localhost:5000/api/new-chat", { method: "POST" })
+    fetch(`${API}/api/new-chat`, { method: "POST" })
       .then((res) => res.json())
       .then((data) => navigate(`/chat/${data.sessionId}`));
   };
 
   // DELETE CHAT
   const deleteChat = (id) => {
-    fetch(`http://localhost:5000/api/session/${id}`, { method: "DELETE" })
+    fetch(`${API}/api/session/${id}`, { method: "DELETE" })
       .then(() => {
         if (sessionId === id) navigate("/");
         fetchSessions();
@@ -44,7 +46,7 @@ export default function ChatPage() {
 
   // RENAME CHAT
   const renameChat = (id, newName) => {
-    fetch(`http://localhost:5000/api/session/${id}/title`, {
+    fetch(`${API}/api/session/${id}/title`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: newName }),
@@ -53,7 +55,7 @@ export default function ChatPage() {
 
   // PIN CHAT
   const pinChat = (id) => {
-    fetch(`http://localhost:5000/api/session/${id}/pin`, {
+    fetch(`${API}/api/session/${id}/pin`, {
       method: "PUT",
     }).then(fetchSessions);
   };
